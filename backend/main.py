@@ -4,6 +4,7 @@ import os
 from dotenv import find_dotenv, load_dotenv
 from fastapi import FastAPI
 from motor.motor_asyncio import AsyncIOMotorClient
+from uvicorn import run
 
 ENV = find_dotenv(load_dotenv())
 
@@ -25,3 +26,7 @@ async def startup_db_client():
 async def shutdown_db_client():
     """The database disconnection code"""
     app.mongodb_client.close()
+
+
+if __name__ == "__main__":
+    run("main:app", reload=True)
