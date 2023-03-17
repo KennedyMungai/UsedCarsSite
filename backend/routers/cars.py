@@ -15,3 +15,11 @@ async def list_cars() -> dict:
         dict: A message to show the proper running of the code
     """
     return {"data": "All cars will go here"}
+
+
+@router.post("/", response_description="Add a new car")
+async def create_car(request: Request, car: CarBase = Body(...)):
+    car = jsonable_encoder(car)
+    new_car = await request.app.mongodb["cars1"].find_one({"_id": new_car.inserted_id})
+
+    return JSONResponse(status_code=status.HTTP_201_CREATED, content=create_car)
