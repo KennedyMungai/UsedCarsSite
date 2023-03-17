@@ -5,6 +5,6 @@
     }
   ],
   "settings": {
-    "cSpell.words": ["dotenv"]
+    "cSpell.words": ["dotenv", "jsonable"]
   }
 }
