@@ -2,13 +2,11 @@
 import os
 
 from dotenv import find_dotenv, load_dotenv
-from fastapi import APIRouter, Body, FastAPI, Request, status
-from fastapi.encoders import jsonable_encoder
-from fastapi.responses import JSONResponse
-from models import CarBase
+from fastapi import FastAPI
 from motor.motor_asyncio import AsyncIOMotorClient
-from routers.cars import router as cars_router
 from uvicorn import run
+from routers.cars import router as cars_router
+
 
 ENV = find_dotenv(load_dotenv())
 
