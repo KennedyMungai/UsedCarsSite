@@ -16,15 +16,17 @@ DB_NAME = os.environ.get("DB_NAME")
 
 app = FastAPI()
 
+app.include_router(cars_router, prefix="/cars", tags=["cars"])
 
-@app.on_event("startup")
+
+@ app.on_event("startup")
 async def startup_db_client():
     """The database connection code"""
     app.mongodb_client = AsyncIOMotorClient(DB_URL)
     app.mongodb = app.mongodb_client[DB_NAME]
 
 
-@app.on_event("shutdown")
+@ app.on_event("shutdown")
 async def shutdown_db_client():
     """The database disconnection code"""
     app.mongodb_client.close()
