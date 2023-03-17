@@ -2,9 +2,13 @@
 from fastapi import FastAPI
 from dotenv import load_dotenv, find_dotenv
 from motor.motor_asyncio import AsyncIOMotorClient
+import os
 
 ENV = find_dotenv(load_dotenv())
 
+
+DB_URL = os.environ.get("DB_URL")
+DB_NAME = os.environ.get("DB_NAME")
 
 app = FastAPI()
 
